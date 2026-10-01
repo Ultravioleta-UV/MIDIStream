@@ -1,0 +1,53 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="MidiShortcuts.MainWindow"
+        Title="MIDI Shortcuts - Starrypad mini"
+        Icon="/Assets/app.ico"
+        Width="820" Height="520"
+        MinWidth="720" MinHeight="360"
+        WindowStartupLocation="CenterScreen">
+
+  <DockPanel>
+
+    <!-- Barra superior -->
+    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Spacing="8" Margin="10">
+      <TextBlock Text="Puerto MIDI:" VerticalAlignment="Center" />
+      <ComboBox x:Name="PortCombo" Width="260" PlaceholderText="No se detectan dispositivos MIDI" />
+      <Button x:Name="RefreshBtn" Content="Actualizar" />
+      <Button x:Name="StartBtn" Content="Iniciar escucha" />
+      <TextBlock x:Name="StatusLbl" Text="Detenido" Foreground="Red" VerticalAlignment="Center" />
+      <TextBlock x:Name="LastPadLbl" Foreground="RoyalBlue" VerticalAlignment="Center" />
+    </StackPanel>
+
+    <!-- Nota inferior -->
+    <TextBlock DockPanel.Dock="Bottom" Margin="10,0,10,10" TextWrapping="Wrap" Foreground="Gray"
+               Text="Al cerrar la ventana (X) la app sigue escuchando en la bandeja del sistema. Para salir del todo, click derecho en el icono de la bandeja > Salir." />
+
+    <!-- Botones inferiores -->
+    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Spacing="8" Margin="10">
+      <Button x:Name="NewBtn" Content="Nuevo atajo" />
+      <Button x:Name="DelBtn" Content="Eliminar seleccionado" />
+    </StackPanel>
+
+    <!-- Encabezado de la tabla -->
+    <Grid DockPanel.Dock="Top" ColumnDefinitions="200,130,*" Margin="22,0,22,0">
+      <TextBlock Grid.Column="0" Text="Pad / Control" FontWeight="SemiBold" />
+      <TextBlock Grid.Column="1" Text="Tipo de accion" FontWeight="SemiBold" />
+      <TextBlock Grid.Column="2" Text="Accion" FontWeight="SemiBold" />
+    </Grid>
+
+    <!-- Tabla de atajos -->
+    <ListBox x:Name="ShortcutList" Margin="10,4,10,0" SelectionMode="Multiple">
+      <ListBox.ItemTemplate>
+        <DataTemplate>
+          <Grid ColumnDefinitions="200,130,*">
+            <TextBlock Grid.Column="0" Text="{Binding Description}" />
+            <TextBlock Grid.Column="1" Text="{Binding Type}" />
+            <TextBlock Grid.Column="2" Text="{Binding Value}" TextTrimming="CharacterEllipsis" />
+          </Grid>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+
+  </DockPanel>
+</Window>

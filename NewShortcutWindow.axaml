@@ -1,0 +1,39 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="MidiShortcuts.NewShortcutWindow"
+        Title="Nuevo atajo"
+        Icon="/Assets/app.ico"
+        Width="460"
+        SizeToContent="Height"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner">
+
+  <StackPanel Margin="20" Spacing="10">
+
+    <TextBlock Text="1. Pulsa 'Capturar' y luego toca el pad/knob:" />
+    <StackPanel Orientation="Horizontal" Spacing="12">
+      <TextBlock x:Name="TargetLbl" Text="(sin capturar)" VerticalAlignment="Center" MinWidth="200" />
+      <Button x:Name="CaptureBtn" Content="Capturar" />
+    </StackPanel>
+
+    <TextBlock Text="2. Tipo de accion:" Margin="0,10,0,0" />
+    <WrapPanel>
+      <RadioButton x:Name="RbTecla" GroupName="tipo" Content="Tecla/atajo" IsChecked="True" Margin="0,0,16,0" />
+      <RadioButton x:Name="RbTexto" GroupName="tipo" Content="Escribir texto" Margin="0,0,16,0" />
+      <RadioButton x:Name="RbApp" GroupName="tipo" Content="Abrir programa" Margin="0,0,16,0" />
+      <RadioButton x:Name="RbCarpeta" GroupName="tipo" Content="Abrir carpeta" />
+    </WrapPanel>
+
+    <TextBlock Text="3. Valor:" Margin="0,10,0,0" />
+    <Grid ColumnDefinitions="*,Auto">
+      <TextBox x:Name="ValueBox" />
+      <Button x:Name="BrowseBtn" Grid.Column="1" Content="..." Margin="6,0,0,0" />
+    </Grid>
+
+    <TextBlock Text="Ejemplos tecla: ctrl+c , alt+tab , win+d , ctrl+shift+esc" Foreground="Gray" />
+
+    <Button x:Name="SaveBtn" Content="Guardar atajo" IsDefault="True"
+            HorizontalAlignment="Center" Margin="0,10,0,0" />
+
+  </StackPanel>
+</Window>
