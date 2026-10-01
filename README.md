@@ -1,3 +1,5 @@
+1. Cambiar este readme
+
 # MIDI Shortcuts - Starrypad mini (C# / Avalonia)
 
 Misma logica interna que la version WinForms (MIDI por winmm.dll, teclas por
